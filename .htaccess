@@ -1,0 +1,2 @@
+# Hostinger deploys this site with git, so keep repository files private.
+RedirectMatch 404 /(\.git|\.github|REVIEW\.md)
