@@ -20,15 +20,17 @@ Passed JavaScript syntax, duplicate ID, local navigation/anchor, modal and tab t
 Browser visual and interaction verification remains pending: the local browser download failed and the cloud browser could not access the local preview. Before deployment, inspect desktop and mobile layouts; open and close every course modal and a photo dialog; test mobile navigation, branch-banner enlargement, location tabs, both video players and enquiry preparation. Do not send a test enquiry to the school without authorization.
 
 ## Preview and deploy
-The site is hosted on GitHub Pages from the `main` branch root. `CNAME` sets the custom domain to www.sreeaaradhana.in and `.nojekyll` serves the files as-is.
+The site stays on Hostinger. `.github/workflows/deploy-hostinger.yml` uploads changed files over FTP on every push to `main`. It never deletes server files that did not come from this repository, so existing server-side files are kept.
 
 1. Preview locally with `python3 -m http.server 8080` and open http://localhost:8080.
-2. One-time setup in GitHub: Settings → Pages → Source "Deploy from a branch", branch `main`, folder `/ (root)`. Custom domain: `www.sreeaaradhana.in`.
-3. One-time DNS setup at the domain's DNS provider (Hostinger hPanel → DNS Zone):
-   - Replace the apex `@` A records with 185.199.108.153, 185.199.109.153, 185.199.110.153 and 185.199.111.153.
-   - Set `www` as a CNAME to `inaivuit-git.github.io`.
-   - Keep the existing MX and TXT records so domain email keeps working.
-4. Once the certificate is issued, tick "Enforce HTTPS" in Settings → Pages.
-5. Every merge to `main` then publishes automatically. Verify https://www.sreeaaradhana.in/ and both secondary pages after each change.
+2. One-time setup:
+   - In Hostinger hPanel → Files → FTP Accounts, note the FTP host (IP or `ftp.sreeaaradhana.in`), username and password, and the folder the site lives in.
+   - Back up the current web root (hPanel → File Manager → select all → Compress → Download).
+   - In GitHub → Settings → Secrets and variables → Actions, add the secrets `FTP_SERVER`, `FTP_USERNAME` and `FTP_PASSWORD`.
+   - Only if needed, add the variables `FTP_SERVER_DIR` (default `public_html/`, with trailing slash) and `FTP_PROTOCOL` (default `ftps`; use `ftp` if the TLS connection is refused).
+3. Run the workflow once from Actions → Deploy to Hostinger → Run workflow. The first run uploads every file. Later runs upload only changes.
+4. Verify https://www.sreeaaradhana.in/ and both secondary pages.
 
-Existing large course images are retained and lazy-loaded. Bootstrap 5.3.3 is still loaded from jsDelivr for course modals and map tabs. YouTube and Google Maps require network access.
+If Hostinger's own Git deployment (hPanel → Advanced → Git) is connected to this repository, use that or this workflow, not both.
+
+Large course and hero photos were resized to at most 1600 px (about 66 MB down to 1.7 MB) with no visible change. They are lazy-loaded. Drums.mp4 is unchanged because it is already efficiently encoded, and the gallery loads it only when played. Bootstrap 5.3.3 is still loaded from jsDelivr for course modals and map tabs. YouTube and Google Maps require network access.
