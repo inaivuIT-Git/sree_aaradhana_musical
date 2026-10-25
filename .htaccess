@@ -1,2 +1,4 @@
-# Hostinger deploys this site with git, so keep repository files private.
-RedirectMatch 404 /(\.git|\.github|REVIEW\.md)
+# Hostinger deploys this site with git, so keep repository files private:
+# git data, the Supabase backend source, tests and the Markdown notes.
+RedirectMatch 404 ^/(\.git|\.github|supabase|tests)(/|$)
+RedirectMatch 404 \.md$
