@@ -13,3 +13,6 @@ viewer?.addEventListener('close',()=>{document.body.style.overflow=previousOverf
 viewer?.addEventListener('click',e=>{if(e.target===viewer){const r=viewer.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)viewer.close();}});
 const form=document.querySelector('#contactForm');
 form?.addEventListener('submit',e=>{e.preventDefault();if(!form.reportValidity())return;const fields=new FormData(form);const text=`Hello Sree Aaradhana, I would like to enquire about your classes.\n\nName: ${fields.get('name')}\nCourse: ${fields.get('subject')}\nMessage: ${fields.get('message')}`;const link=document.createElement('a');link.href='https://wa.me/919514488517?text='+encodeURIComponent(text);link.target='_blank';link.rel='noopener noreferrer';link.textContent='Open your enquiry in WhatsApp ↗';const status=document.querySelector('#form-status');status.replaceChildren(document.createTextNode('Your enquiry is ready. Review it and tap Send in WhatsApp. '),link);link.click();});
+
+const examCarousel=document.querySelector('#examCarousel');
+if(examCarousel&&window.bootstrap&&matchMedia('(prefers-reduced-motion: reduce)').matches){bootstrap.Carousel.getOrCreateInstance(examCarousel).pause();}
