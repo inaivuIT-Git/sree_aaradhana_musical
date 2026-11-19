@@ -7,7 +7,7 @@ Static HTML, CSS and JavaScript for the existing Hostinger site. No build step.
 - gallery.html: four November 2026 Exam Day photos, nine supplied celebration photos with accessible full-size dialogs, the requested YouTube video, and the repository's existing Drums.mp4.
 - event.html: consistent navigation and clear archive labelling for the October 2025 announcement.
 - assets/css/modern.css and assets/js/modern.js: shared layout, mobile navigation, photo dialogs and WhatsApp enquiry preparation.
-- assets/images/academy-logo.jpeg, attur-branch-banner.jpeg and gallery/: supplied images copied without visual alteration.
+- assets/images/academy-logo.jpeg and gallery/: supplied images copied without visual alteration.
 
 ## Contact behaviour
 The old page displayed success before any delivery confirmation and referenced send_enquiry.php, which is absent from this repository. The new form prepares an enquiry for WhatsApp at the school's existing published number, +91 95144 88517. The visitor must review it and press Send in WhatsApp. There is also a direct call link. Confirm that this school number accepts WhatsApp before release; otherwise use the call option or connect a verified enquiry endpoint.
