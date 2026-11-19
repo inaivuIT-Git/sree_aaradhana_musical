@@ -3,8 +3,8 @@
 Static HTML, CSS and JavaScript for the existing Hostinger site. No build step.
 
 ## Changed pages
-- index.html: responsive home page, supplied logo, new Attur branch announcement, course details, enquiry flow and existing Salem location maps.
-- gallery.html: nine supplied celebration photos with accessible full-size dialogs, the requested YouTube video, and the repository's existing Drums.mp4.
+- index.html: responsive home page, supplied logo, November 2026 Exam Day banner (replaced the Attur branch announcement), course details, enquiry flow and existing Salem location maps.
+- gallery.html: four November 2026 Exam Day photos, nine supplied celebration photos with accessible full-size dialogs, the requested YouTube video, and the repository's existing Drums.mp4.
 - event.html: consistent navigation and clear archive labelling for the October 2025 announcement.
 - assets/css/modern.css and assets/js/modern.js: shared layout, mobile navigation, photo dialogs and WhatsApp enquiry preparation.
 - assets/images/academy-logo.jpeg, attur-branch-banner.jpeg and gallery/: supplied images copied without visual alteration.
