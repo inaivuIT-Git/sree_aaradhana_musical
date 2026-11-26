@@ -28,4 +28,6 @@ The site is on Hostinger, deployed with Hostinger's Git integration: `public_htm
 4. Optional automatic deploys: on the same Git page turn on Auto Deployment and copy the webhook URL. In GitHub → Settings → Webhooks → Add webhook, paste it as the Payload URL and keep "Just the push event". Every merge to `main` then deploys.
 5. Verify https://www.sreeaaradhana.in/ and both secondary pages.
 
+Hostinger's CDN tells browsers to cache CSS and JS for 7 days. Whenever modern.css or modern.js changes, bump the `?v=` date on their links in all three HTML pages so visitors get the new files straight away.
+
 Large course and hero photos were resized to at most 1600 px (about 66 MB down to 1.7 MB) with no visible change. They are lazy-loaded. Drums.mp4 was re-encoded (H.264, same 848×478 size and length) from 31 MB to 17 MB, and the gallery loads it only when played. Bootstrap 5.3.3 is still loaded from jsDelivr for course modals and map tabs. YouTube and Google Maps require network access.
