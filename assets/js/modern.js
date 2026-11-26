@@ -16,3 +16,22 @@ form?.addEventListener('submit',e=>{e.preventDefault();if(!form.reportValidity()
 
 const examCarousel=document.querySelector('#examCarousel');
 if(examCarousel&&window.bootstrap&&matchMedia('(prefers-reduced-motion: reduce)').matches){bootstrap.Carousel.getOrCreateInstance(examCarousel).pause();}
+// Launch advertisement: shown once per browser session, on whichever page the visitor opens first.
+(function(){
+  let seen=false;
+  try{seen=sessionStorage.getItem('adSeen')==='1';}catch(e){}
+  if(seen||typeof HTMLDialogElement!=='function')return;
+  const ad=document.createElement('dialog');
+  ad.className='launch-ad';
+  ad.setAttribute('aria-label','Sound healing therapy and music classes for children');
+  ad.innerHTML='<button class="viewer-close" aria-label="Close advertisement">×</button>'+
+    '<img src="assets/images/sound-healing-therapy-ad.webp" width="1169" height="1280" alt="Sree Aaradhana School of Music: sound healing therapy and music training for children with autism and hyperactivity. Admissions open to train children as drummers, keyboard players, guitarists, violinists and singers. For details call +91 84897 77293.">'+
+    '<div class="launch-ad-actions"><a class="button small" href="tel:+918489777293">Call +91 84897 77293</a><button class="text-link launch-ad-dismiss">Continue to site</button></div>';
+  document.body.appendChild(ad);
+  const close=()=>ad.close();
+  ad.querySelector('.viewer-close').addEventListener('click',close);
+  ad.querySelector('.launch-ad-dismiss').addEventListener('click',close);
+  ad.addEventListener('click',e=>{if(e.target===ad)close();});
+  ad.addEventListener('close',()=>{document.body.style.overflow='';});
+  setTimeout(()=>{if(document.querySelector('dialog[open]'))return;try{sessionStorage.setItem('adSeen','1');}catch(e){}document.body.style.overflow='hidden';ad.showModal();},600);
+})();
